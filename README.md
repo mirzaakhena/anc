@@ -1,30 +1,29 @@
-# anc
 
-accountable and controllable system
+
+# (ANC) accountable and controllable system
 
 you need 
 
 backend:
-### java 8
-### mysql
-### maven
+- java 8
+- mysql
+- maven
 
 frontend:
-### npm
-### gulp
-### bower
+- npm
+- gulp
+- bower
 
 
 there are 5 main directory. 4 of them is maven module project which is
-### accounting as core accounting system
-### inventory as inventory module
-### manufacture as manufacture module -> main application is in this module
-### security as user management module (not used already)
-### web as front end apps. this is angularjs application not an maven module project
+- accounting as core accounting system
+- inventory as inventory module
+- manufacture as manufacture module -> main application is in this module
+- security as user management module (not used already)
+- web as front end apps. this is angularjs application not an maven module project
 
-# how to compile?
+# how to compile frontend?
 
-frontend
 go to web folder and run 
 
 ```
@@ -58,7 +57,7 @@ in to
 
 
 
-backend
+# how to compile backend ?
 
 if you already have a maven, goto root folder (where you can see that 5 folder) then you need to run 
 ```
