@@ -1,0 +1,10 @@
+.DS_Store
+.classpath
+.mvn/
+.project
+.settings/
+target/
+logs/
+.openshift/
+
+*/src/main/resources/public/*

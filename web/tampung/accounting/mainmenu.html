@@ -1,0 +1,14 @@
+<div class="container">
+    <div ui-view="tab-content"></div>
+    <form class="form-signin">
+        <h2>Manufacture</h2>
+        <input type="text" id="inputEmail" ng-model="searchText" class="form-control" placeholder="Cari Menu atau transaksi" required autofocus>
+        <div class="list-group">
+            <a href="#" ng-repeat="menu in menus | filter:searchText | orderBy:'title'" class="list-group-item" ui-sref="{{menu.link}}">
+                <h4 class="list-group-item-heading">{{menu.title}}</h4>
+                <p class="list-group-item-text">{{menu.text}}</p>
+            </a>
+        </div>
+    </form>
+</div>
+<!-- /container -->

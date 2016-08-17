@@ -1,0 +1,53 @@
+<div class="panel panel-tab">
+    <div class="panel-heading">
+        <div class="form-inline">
+            <button class="btn btn-primary" ng-click="create()"><i class="fa fa-check-square-o"></i> Produk Baru</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="masuk">
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <th>Keterangan</th>
+                                <th>Satuan</th>
+                                <th>Minimal Quantity</th>
+                                <th>Sale Price</th>
+                                <th>Overhead</th>
+                                <th>Labour</th>
+                                <th>Raw Material Items</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="rm in listOfFinishGoods">
+                                <td>{{rm.id}}</td>
+                                <td>{{rm.name}}</td>
+                                <td>{{rm.description}}</td>
+                                <td>{{rm.unitName}}</td>
+                                <td>{{rm.minimalQuantity}}</td>
+                                <td>{{rm.salePrice}}</td>
+                                <td>{{rm.overhead}}</td>
+                                <td>{{rm.labour}}</td>
+                                <td>{{rm.listRawMaterialDetail.length}}</td>
+                                <td>
+                                    <button class="btn btn-primary" ng-click="update(recipe)" tooltip="Edit" tooltip-trigger tooltip-animation="false" tooltip-placement="top">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </button>
+                                    <button class="btn btn-danger" ng-click="remove(recipe)" tooltip="Delete" tooltip-trigger tooltip-animation="false" tooltip-placement="top">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</div>

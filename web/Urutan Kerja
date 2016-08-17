@@ -1,0 +1,106 @@
+journal umum
+journal dinamis - template kaku
+journal khusus - template spesifik dan spesial
+
+
+
+Unit
+Account
+Journal
+
+-Supplier -SettlementOfAccountPayable
+-Customer -SettlementOfAccountReceivable
+-Katalog Bank -Bank
+-Katalog Kas -Cash
+-Kategori Pemasukan -Income					READONLY
+-Kategori Pengeluaran -Expense				
+-Raw Material -StockRawMaterial 			READONLY
+-Finish Goods -StockFinishGoods				READONLY
+
+Minimum Stok
+Umur Piutang
+Umur Utang
+Monitoring Bilyet Giro masuk
+Monitoring Bilyet Giro keluar
+
+
+
+Bank
+Cash
+
+Pembelian Raw Material
+Penjualan Finish Goods
+
+Pemasukan
+Pengeluaran
+
+Pembayaran Utang
+Pembelian Raw Material
+
+Penerimaan Piutang
+Penjualan Finish Goods
+
+Penyesuaian
+Produksi
+
+
+Link Account
+
+User
+
+Authority
+
+Module
+
+Role
+
+Unit Convertion
+
+Company Profile
+
+
+####################################################
+
+saldo awal wip : 
+qty : 1000, bb: 1.800.000, tk: 750.000, oh: 200.000, cc: 80%
+
+periode ini:
+qty : 3000, bb: 6.000.000, tk: 2.100.000, oh: 600.000, cc: 60%
+
+selesai 3600
+
+totalCost RM : 7800000
+totalCost TK : 2850000.0
+totalCost OH : 800000
+
+EU RM : 4000.0
+EU TK : 3840.0
+EU OH : 3840.0
+
+CPU FGS RM : 1950.0000000000
+CPU FGS TK : 742.1875000000
+CPU FGS OH : 208.3333333333
+
+CPU WIP RM : 1950.0000000000
+CPU WIP TK : 445.3125000000
+CPU WIP OH : 124.99999999998
+
+Total CPU FGS 2900.5208333333
+Total CPU WIP 2520.31249999998
+
+Total WIP : 1008124.99999999200
+Total FGS : 10441874.9999998800
+
+WIP + FGS = 11449999.99999987200
+
+
+####################################################
+
+
+
+
+Persediaan Awal | Cost yg ditambahkan periode ini | barang Jadi | sisa akhir
+
+
+
+

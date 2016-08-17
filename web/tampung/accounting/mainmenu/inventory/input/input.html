@@ -1,0 +1,60 @@
+<div ng-cloak>
+    <div class="modal-header">
+        <h3 class="modal-title">Input New Inventory Balance</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Date After</label>
+                <div class="col-sm-10">
+                    <input date-range-picker options="opts" class="form-control date-picker" type="text" ng-model="datePicker" placeholder="select date range" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Journal</label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="selectedJournal" ng-change="onJournalSelected()" ng-options="journal as journal.description for journal in journals">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Accounts</label>
+                <div class="col-sm-10">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Nama</th>
+                                <th>Sign</th>
+                                <th class="col-xs-4">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ac in accounts">
+                                <td>{{ac.code}}</td>
+                                <td>{{ac.name}} </td>
+                                <td>
+                                    <span class="label label-primary" ng-show="ac.pos=='DEBET'">                                    
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true">                                            
+                                        </span> / DEBET
+                                    </span>
+                                    <span class="label label-primary" ng-show="ac.pos=='CREDIT'">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true">                                            
+                                        </span> / DEBET
+                                    </span>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Quantity" ng-model="ac.quantity">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>
+    </div>
+</div>

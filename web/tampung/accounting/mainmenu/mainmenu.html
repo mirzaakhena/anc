@@ -1,0 +1,27 @@
+<div class="row">
+<!--     <div class="col-sm-3">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="text" ng-model="searchText" class="form-control" style="margin-bottom:10px" placeholder="Cari transaksi yang berkaitan">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <div class="list-group">
+                    
+                    <a ng-repeat="menu in menus | filter:searchText" ui-sref="{{menu.link}}" ng-class="{active: state.includes('{{menu.link.substr(0,menu.link.lastIndexOf('.'))}}')}" class="list-group-item">
+                        <h4 class="list-group-item-heading">{{menu.title}}</h4>
+                        <p class="list-group-item-text">{{menu.text}}</p>
+                    </a>
+                    <a ng-repeat="menu in menus | filter:searchText | orderBy:'title'" ui-sref="{{menu.link}}" ng-class="{active: state.includes('{{menu.link.substr(0,menu.link.lastIndexOf('.'))}}')}" class="list-group-item">
+                        {{menu.title}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="col-sm-12">
+        <div ui-view="mainmenu"></div>
+    </div>
+</div>

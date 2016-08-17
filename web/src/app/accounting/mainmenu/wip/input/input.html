@@ -1,0 +1,78 @@
+<div ng-cloak>
+    <div class="modal-header">
+        <h3 class="modal-title">Start Produksi Baru</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Produksi Baru</h3></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Nama Produk</label>
+                        <div class="col-sm-9">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" typeahead-on-select="onSelect($item, $model, $label, $event)" ng-model="fgSelected" placeholder="Nama Finished Goods" uib-typeahead="finishgoods as finishgoods.name for finishgoods in getFinishGoods($viewValue)">
+                                <span class="input-group-addon" id="basic-addon2">{{fgSelected.code}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Kode Produksi</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Kode Produksi" ng-model="productionCode">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Quantity</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="quantityProduksi" placeholder="Jumlah Produk" aria-describedby="basic-addon2">
+                                <span class="input-group-addon" id="basic-addon2">{{fgSelected.unitName}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="panel panel-default" ng-show="firsttime">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Produksi Sebelumnya</h3></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Quantity</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Jumlah Produksi" ng-model="prevQuantityProduksi" aria-describedby="basic-addon2">
+                                <span class="input-group-addon" id="basic-addon2">Buah</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Raw Material</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Total Biaya Raw Material" ng-model="prevCostRM">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Tenaga Kerja</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Total Biaya Tenaga Kerja" ng-model="prevCostLB">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Overhead</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Total Biaya Overhead" ng-model="prevCostOH">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="container-fluid" id="myimage">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed pull-left" style="margin-left: 10px" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Lonato</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Cucian</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Transaksi</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Stok</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Pelanggan</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" id="togglefullscreen"> <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span> FullScreen</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  Pengaturan <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Pegawai</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Paket Kiloan</a></li>
+                            <li><a href="#">Paket Satuan</a></li>
+                            <li><a href="#">Paket Karpet</a></li>
+                            <li><a href="#">Paket Deposit</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Pewangi</a></li>
+                            <li><a href="#">Kategori Pemasukan</a></li>
+                            <li><a href="#">Kategori Pengeluaran</a></li>
+                            <li><a href="#">Kategori Utang</a></li>
+                            <li><a href="#">Kategori Piutang</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Proses Layanan</a></li>
+                            <li><a href="#">Generate Voucher</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Admin <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Ubah Data diri</a></li>
+                            <li><a href="#">Ganti Password</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div ui-view="content"></div>
+</div>

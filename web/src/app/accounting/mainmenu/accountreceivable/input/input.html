@@ -1,0 +1,45 @@
+<div ng-cloak>
+    <div class="modal-header">
+        <h3 class="modal-title">Penerimaan Piutang</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Total</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="total" disabled="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Pilih Kas</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Cash Name" ng-model="cash.account" uib-typeahead="cash as cash.name for cash in getCash($viewValue)">
+                </div>
+                <label class="col-sm-2 control-label">Kas</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Terima dengan Kas" ng-model="cash.amount" ng-change="valueChange()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Pilih Bank</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Bank Name" ng-model="bank.account" uib-typeahead="bank as bank.name for bank in getBank($viewValue)">
+                </div>
+                <label class="col-sm-2 control-label">Bank</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="Terima dengan Bank" ng-model="bank.amount" ng-change="valueChange()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 col-sm-offset-4 control-label">Penerimaan Berikutnya</label>
+                <div class="col-sm-4">
+                     <input date-range-picker options="opts" class="form-control date-picker" type="text" ng-model="datePicker" placeholder="select date range" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>
+    </div>
+</div>

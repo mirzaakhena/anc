@@ -1,0 +1,85 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" ng-init="toggled=true" ng-click="toggled = !toggled">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><b>ANC</b></a>
+        </div>
+        <div class="navbar-collapse" ng-class="{'collapse':toggled}">
+            <ul class="nav navbar-nav">
+                <!-- <li ng-class="{active: state.includes('app.accounting')}"><a ui-sref="app.accounting.account" ng-click="toggled=true">Accounting</a></li> -->
+                <!-- <li ng-class="{active: state.includes('app.mainmenu')}"><a ui-sref="app.mainmenu.supplier.table" ng-click="toggled=true">Main Menu</a></li> -->
+                <li ng-class="{active: state.includes('app.transaksi')}" uib-dropdown>
+                    <a href type="button" uib-dropdown-toggle>
+                        Laporan <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <!-- <li role="menuitem"><a href="#">Laba Rugi</a></li>
+                        <li role="menuitem"><a href="#">Neraca</a></li>
+                        <li role="menuitem"><a href="#">Perubahan Modal</a></li>
+                        <li role="menuitem"><a href="#">Cashflow</a></li> -->
+                        <li role="menuitem"><a ui-sref="app.mainmenu.account.table">Chart Of Account</a></li>                        
+                        <li role="menuitem"><a ui-sref="app.mainmenu.inventory.table">Stok Inventory</a></li>                        
+                        <!-- <li role="separator" class="divider"></li>
+                        <li role="menuitem"><a href="#">Piutang Jatuh Tempo</a></li>
+                        <li role="menuitem"><a href="#">Utang Jatuh Tempo</a></li>
+                        <li role="menuitem"><a href="#">Bilyet Giro Jatuh Tempo</a></li>                        
+                        <li role="menuitem"><a href="#">Perubahan Modal</a></li> -->
+                    </ul>
+                </li>
+                <li ng-class="{active: state.includes('app.transaksi')}" uib-dropdown>
+                    <a href type="button" uib-dropdown-toggle>
+                        Transaksi <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <li role="menuitem"><a ui-sref="app.mainmenu.journal.table">Journal</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.purchase.input">Pembelian</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.sale.input">Penjualan</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.wip.table">Produksi</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.accountpayable.table">Pembayaran Utang</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.accountreceivable.table">Penerimaan Piutang</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.accountreceivable.table">Pencatatan Biaya</a></li>
+                    </ul>
+                </li>
+                <li ng-class="{active: state.includes('app.masterdata')}" uib-dropdown>
+                    <a href type="button" uib-dropdown-toggle>
+                        Master Data <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <li role="menuitem"><a ui-sref="app.mainmenu.catalogcash.table">Daftar Kas</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.catalogbank.table">Daftar Bank</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.supplier.table">Data Supplier</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.customer.table">Data Pelanggan</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.expensecategory.table">Kategori Biaya</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.unit.table">Daftar Unit</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.rawmaterial.table">Daftar Raw Material</a></li>
+                        <li role="menuitem"><a ui-sref="app.mainmenu.finishedgoods.table">Daftar Produk</a></li>
+                    </ul>
+                </li>
+                <!-- <li ng-class="{active: state.includes('app.setting')}" uib-dropdown>
+                    <a href type="button" uib-dropdown-toggle>
+                        Setting <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <li role="menuitem"><a href="#" ng-click="nav.openCash()">Parent Account</a></li>
+                        <li role="menuitem"><a href="#" ng-click="nav.openBank()">Company Name</a></li>
+                    </ul>
+                </li> -->
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control " typeahead-on-select="onSelect($item, $model, $label, $event)" ng-model="menuSelected" placeholder="Cari Menu" uib-typeahead="menu as menu.title for menu in menus | filter:{title:$viewValue}">
+                    </div>
+                </form>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container-fluid">
+    <div ui-view="content"></div>
+</div>
+<!-- /.container -->

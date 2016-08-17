@@ -1,0 +1,120 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Work In Process - {{accountName}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input date-range-picker options="opts" class="form-control date-picker" type="text" ng-model="datePicker" placeholder="select date range" />
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="masuk">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-condensed" ng-repeat="wip in wips">
+                                <tbody>
+                                    <tr>
+                                        <th rowspan="2">26-06-2016</th>
+                                        <th colspan="4" style="text-align:center;">Production</th>
+                                        <th colspan="4" style="text-align:center;">Finished</th>
+                                        <th colspan="2" style="text-align:center;">Remaining</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Previous</th>
+                                        <th>New</th>
+                                        <th>Additional</th>
+                                        <th>Total</th>
+                                        <th rowspan="3">Conv Cost</th>
+                                        <th rowspan="3">Eq Unit</th>
+                                        <th rowspan="2">CPU FG</th>
+                                        <th>Total Unit Finished</th>
+                                        <th rowspan="2">CPU WIP</th>
+                                        <th>Total Unit WIP</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Quantity</span>
+                                        </th>
+                                        <td>{{wip.previousQuantity}}</td>
+                                        <td>{{wip.newQuantity}}</td>
+                                        <td></td>
+                                        <td>{{wip.totalQuantity}}</td>
+                                        
+                                        <td>{{wip.finishQuantity}}</td>
+                                        
+                                        <td>{{wip.remainingQuantity}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th colspan="4" style="text-align:center;">Cost</th>
+                                        
+                                        <th colspan="4" style="text-align:center;">Cost</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Raw Material</th>
+                                        <td>{{wip.previousCost.rm | number:2}}</td>
+                                        <td>{{wip.newCost.rm | number:2}}</td>
+                                        <td></td>
+                                        <td>{{wip.subTotal.rm | number:2}}</td>
+                                        <td>100</td>
+                                        <td>{{wip.euRM}}</td>
+                                        <td>{{wip.cpuFG.rm |number:2}}</td>
+                                        <td>{{wip.subTotalFG.rm |number:2}}</td>
+                                        <td>{{wip.cpuWP.rm |number:2}}</td>
+                                        <td>{{wip.subTotalWP.rm |number:2}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Labour</th>
+                                        <td>{{wip.previousCost.lb | number:2}}</td>
+                                        <td>{{wip.newCost.lb | number:2}}</td>
+                                        <td></td>
+                                        <td>{{wip.subTotal.lb | number:2}}</td>
+                                        <td>{{wip.ccLB}}</td>
+                                        <td>{{wip.euLB}}</td>
+                                        <td>{{wip.cpuFG.lb | number:2}}</td>
+                                        <td>{{wip.subTotalFG.lb | number:2}}</td>
+                                        <td>{{wip.cpuWP.lb | number:2}}</td>
+                                        <td>{{wip.subTotalWP.lb | number:2}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Overhead</th>
+                                        <td>{{wip.previousCost.oh | number:2}}</td>
+                                        <td>{{wip.newCost.oh | number:2}}</td>
+                                        <td></td>
+                                        <td>{{wip.subTotal.oh | number:2}}</td>
+                                        <td>{{wip.ccOH}}</td>
+                                        <td>{{wip.euOH}}</td>
+                                        <td>{{wip.cpuFG.oh | number:2}}</td>
+                                        <td>{{wip.subTotalFG.oh | number:2}}</td>
+                                        <td>{{wip.cpuWP.oh | number:2}}</td>
+                                        <td>{{wip.subTotalWP.oh | number:2}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Price</th>
+                                        <td>{{wip.previousCost.total | number:2}}</td>
+                                        <td>{{wip.newCost.total | number:2}}</td>
+                                        <td></td>
+                                        <td>{{wip.subTotal.total | number:2}}</td>
+                                        <td colspan="2"></td>                                        
+                                        <td>{{wip.cpuFG.total | number:2}}</td>
+                                        <td>{{wip.subTotalFG.total | number:2}}</td>
+                                        <td>{{wip.cpuWP.total | number:2}}</td>
+                                        <td>{{wip.subTotalWP.total | number:2}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
+    </div>
+</div>

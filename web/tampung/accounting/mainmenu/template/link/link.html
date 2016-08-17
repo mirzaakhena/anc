@@ -1,0 +1,48 @@
+<div class="panel panel-tab">
+    <div class="panel-heading">
+        <div class="form-inline">
+            <h1>Contoh Template</h1>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="masuk">
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-1">Code</th>
+                                <th>Name</th>
+                                <th style="text-align:center;">Debet</th>
+                                <th style="text-align:center;">Credit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ab in ac.accountBalances">
+                                <td>
+                                    <span class="label" ng-class="{'label-primary':ab.account.accountSide === 'ACTIVA', 'label-danger':ab.account.accountSide === 'PASSIVA' }">
+                                                {{ab.account.code}}                                        
+                                            </span>
+                                </td>
+                                <td>
+                                    <div ng-style="{'padding-left': ((ab.account.level-1) * 30) + 'px'}">
+                                        <a class="btn btn-link btn-xs" ng-click="ac.onAccountClicked(ab.account)">
+                                                    {{ab.account.name}}
+                                                </a>
+                                        <a class="btn btn-warning btn-xs" ng-show="ab.account.accountType =='CHILD_AS_SUB_ACCOUNT' && ab.account.level >= 3 " ng-click="ac.onSubAccountClicked(ab.account)"> sub account </a>
+                                        <a class="btn btn-success btn-xs" ng-show="ab.account.accountType =='CHILD_AS_INVENTORY' && ab.account.level >= 3" ng-click="ac.onSubAccountClicked(ab.account)"> inventory </a>
+                                    </div>
+                                </td>
+                                <td ng-style="{'padding-left': (10 +(ab.account.level-1) * 30) + 'px'}" ng-show="ab.account.accountSide =='ACTIVA'">{{ab.balance | number:0}}</td>
+                                <td ng-style="{'padding-left': (10 +(ab.account.level-1) * 30) + 'px'}" ng-show="ab.account.accountSide =='ACTIVA'"></td>
+                                <td ng-style="{'padding-left': (10 +(ab.account.level-1) * 30) + 'px'}" ng-show="ab.account.accountSide =='PASSIVA'"></td>
+                                <td ng-style="{'padding-left': (10 +(ab.account.level-1) * 30) + 'px'}" ng-show="ab.account.accountSide =='PASSIVA'">{{ab.balance | number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</div>

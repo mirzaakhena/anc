@@ -1,0 +1,97 @@
+<div ng-cloak>
+    <div class="modal-header">
+        <h3 class="modal-title">Create Finished Goods</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Nama Finished Goods" ng-model="finishedGoods.name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Description" ng-model="finishedGoods.description">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Unit</label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="selectedUnit" ng-options="unit as unit.name for unit in units">
+                    </select>
+                </div>
+            </div>
+<!--             <div class="form-group">
+                <label class="col-sm-2 control-label">Minimal Quantity</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Buffer Stock of Raw Material" ng-model="finishedGoods.minimalQuantity">
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Labour</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Labour Estimated Cost" ng-model="finishedGoods.labour">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Overhead</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Overhead Estimated Cost" ng-model="finishedGoods.overhead">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Sale Price</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Sale Price of Finish Goods" ng-model="finishedGoods.salePrice">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Raw Material Items</label>
+                <div class="col-sm-10">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Jumlah</th>
+                                <th>Unit</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="rawMaterial in rawMaterials">
+                                <td>{{rawMaterial.name}}</td>
+                                <td>{{rawMaterial.quantity}} </td>
+                                <td>{{rawMaterial.unitName}}</td>
+                                <td>
+                                    <button class="btn btn-danger" ng-click="removeRawMaterial($index)" tooltip="Delete" tooltip-trigger tooltip-animation="false" tooltip-placement="top">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Raw Materials Name" ng-model="selectedRawMaterial" uib-typeahead="rawMaterial as rawMaterial.name for rawMaterial in getRawMaterial($viewValue)">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="quantity of raw material" ng-model="quantitySelectedRawMaterial">
+                                </td>
+                                <td>
+                                    {{selectedRawMaterial.unitName}}
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" ng-disabled="!selectedRawMaterial || !quantitySelectedRawMaterial" ng-click="addRawMaterial()"><i class="fa fa-plus"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>
+    </div>
+</div>

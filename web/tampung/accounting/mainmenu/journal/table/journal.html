@@ -1,0 +1,71 @@
+<div class="panel panel-tab">
+    <div class="panel-heading">
+        <div class="form-inline">
+            <button class="btn btn-primary" ng-click="create()"><i class="fa fa-check-square-o"></i> New Journal</button>
+            <div class="pull-right">
+                <input date-range-picker options="opts" class="form-control date-picker" type="text" ng-model="datePicker" placeholder="select date range" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th class="col-md-4">Description</th>
+                        <th>Code</th>
+                        <th>Account</th>
+                        <th>Sub Account</th>
+                        <th style="text-align:center;">Debet</th>
+                        <th style="text-align:center;">Credit</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="journal in journals">
+                    <tr>
+                        <td rowspan="{{journal.listJournalAccountBalance.length}}">{{journal.date | date:'dd-MM-yyyy'}}</td>
+                        <td rowspan="{{journal.listJournalAccountBalance.length}}">{{journal.description}}</td>
+                        <td>{{journal.listJournalAccountBalance[0].accountBalance.account.code}}</td>
+                        
+                        <td ng-show="journal.listJournalAccountBalance[0].accountBalance.account.level!=4">                            
+                            {{journal.listJournalAccountBalance[0].accountBalance.account.name}}
+                        </td>
+                        <td ng-show="journal.listJournalAccountBalance[0].accountBalance.account.level!=4">
+                            
+                        </td>
+                        
+                        <td ng-show="journal.listJournalAccountBalance[0].accountBalance.account.level==4">
+                            {{journal.listJournalAccountBalance[0].accountBalance.account.accountParent.name}}
+                        </td>
+                        <td ng-show="journal.listJournalAccountBalance[0].accountBalance.account.level==4">
+                            {{journal.listJournalAccountBalance[0].accountBalance.account.name}}
+                        </td>
+
+                        <td style="text-align:right;">{{ journal.listJournalAccountBalance[0].accountBalance.debit | number:2}}</td>
+                        <td style="text-align:right;">{{ journal.listJournalAccountBalance[0].accountBalance.credit | number:2}}</td>
+                    </tr>
+                    <tr ng-repeat-end ng-repeat="gl in journal.listJournalAccountBalance" ng-hide="$first">
+                        
+                        <td>{{gl.accountBalance.account.code}}</td>
+                        <td ng-show="gl.accountBalance.account.level!=4">                            
+                            {{gl.accountBalance.account.name}}
+                        </td>
+                        <td ng-show="gl.accountBalance.account.level!=4">                            
+                        </td>
+                        
+                        <td ng-show="gl.accountBalance.account.level==4">
+                            {{gl.accountBalance.account.accountParent.name}}
+                        </td>
+                        <td ng-show="gl.accountBalance.account.level==4">
+                            {{gl.accountBalance.account.name}}
+                        </td>
+
+                        
+                        <td style="text-align:right;">{{gl.accountBalance.debit | number:2}}</td>
+                        <td style="text-align:right;">{{gl.accountBalance.credit | number:2}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

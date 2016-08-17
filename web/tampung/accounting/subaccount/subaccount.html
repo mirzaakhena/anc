@@ -1,0 +1,43 @@
+<div ng-cloak>
+    <div class="modal-header">
+        <h3 class="modal-title">Sub Account zz - {{accountName}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <ul class="nav nav-pills">
+                    <li>
+                        <input date-range-picker options="opts" class="form-control date-picker" type="text" ng-model="datePicker" />
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="col-md-1">Code</th>
+                                <th>Name</th>
+                                <th style="text-align:center;">Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ac in accountBalances">
+                                <td>
+                                    <span class="label" ng-class="{'label-primary':ac.account.accountSide === 'ACTIVA', 'label-danger':ac.account.accountSide === 'PASSIVA' }">
+                                        {{ac.account.code}}                                     
+                                    </span>
+                                </td>
+                                <td><button class="btn btn-link btn-xs" ng-click="onSubAccountClicked(ac.account)"> {{ac.account.name}} </button></td>
+                                <td style="text-align: right;">{{ac.balance | number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
+    </div>
+</div>

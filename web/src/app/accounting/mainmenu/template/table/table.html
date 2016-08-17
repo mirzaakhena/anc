@@ -1,0 +1,86 @@
+<div class="panel panel-tab">
+    <div class="panel-heading">
+        <div class="form-inline">
+            <button class="btn btn-primary" ng-click="create()"><i class="fa fa-check-square-o"></i> New Template</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="masuk">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <select class="form-control" ng-model="selectedUnit" ng-options="unit as unit.name for unit in units">
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Barang yang dijual</label>
+                        <div class="col-sm-3">
+                             <input type="text" class="form-control" placeholder="amount" disabled="" value="Kursi Kaki Tiga">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" placeholder="amount" ng-model="finishGoods.name" disabled="">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="quantity" ng-model="finishGoods.name">
+                        </div>
+                        <div class="col-sm-1">
+                            <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Nilai Utang yang dibayar</label>
+                        <div class="col-sm-3">
+                             <select class="form-control" ng-model="selectedUnit" ng-options="unit as unit.name for unit in units">
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" placeholder="amount" ng-model="finishGoods.name">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="quantity" ng-model="finishGoods.name" ng-show="false">
+                        </div>
+                        <div class="col-sm-1">
+                            <button class="btn btn-success" ng-show="false"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Nilai Utang yang dibayar</label>
+                        <div class="col-sm-3">
+                             <select disabled="" class="form-control" ng-model="selectedUnit" ng-options="unit as unit.name for unit in units">
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" placeholder="amount" ng-model="finishGoods.name">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="quantity" ng-model="finishGoods.name" ng-show="false">
+                        </div>
+                        <div class="col-sm-1">
+                            <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Nilai Utang yang dibayar</label>
+                        <div class="col-sm-3">
+                             <select class="form-control" ng-model="selectedUnit" ng-options="unit as unit.name for unit in units">
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" placeholder="amount" ng-model="finishGoods.name">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="quantity" ng-model="finishGoods.name">
+                        </div>
+                        <div class="col-sm-1">
+                            <button class="btn btn-success" ng-show="false"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

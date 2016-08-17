@@ -1,0 +1,50 @@
+user melakukan registrasi dengan menginput
+	-nama
+	-email
+	-password
+	-nama_perusahaan
+	
+user tersebut akan menjadi admin
+admin ditandai dengan role=null
+
+journal
+	pada journal ada 3 menu yaitu
+	Account
+		sudah ada bbrp account yg sudah ready tapi hanya di level 3 saja
+	journal
+		pada journal bisa dibuat manual atau dari template dan bisa lihat journal yang sudah dibuat
+		ada authority utk bikin journal
+	template
+		kita bisa lihat template yg sudah ada atau bikin yang baru
+		utk setap template baru yg dibuat, maka akan ada authority yg baru
+	main transaction
+		pembelian
+		penjualan
+		pembayaran utang
+		penerimaan piutang
+		pembayaran biaya
+		penerimaan pendapatan
+		mulai produksi
+		selesai produksi
+		penyesuaian biaya
+		
+		utk setiap transaksi tersebut, sudah ada authority nya
+		
+master_data
+	unit
+	raw_material
+	finish_goods
+		komponen raw_material overhead dan labour
+	supplier
+	customer
+	kategori_pengeluaran
+	kategori_pemasukan
+	finish_goods_price
+	
+setting
+	perusahaan	
+
+user
+	bisa bikin user dan invite user dan pengaturan authority disini
+		
+	

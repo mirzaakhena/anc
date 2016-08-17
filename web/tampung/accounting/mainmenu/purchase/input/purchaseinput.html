@@ -1,0 +1,103 @@
+
+<div ng-cloak>
+    <div class="modal-header">
+        <h3 class="modal-title">Pembelian Raw Material</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-1 control-label">Faktur</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="No Faktur" ng-model="faktur" >
+                </div>
+            </div>
+            <div class="form-group typeahead-demo">
+                <label class="col-sm-1 control-label">Nama</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" typeahead-on-select="onSelect($item, $model, $label, $event)" ng-model="customSelected" placeholder="Nama Raw Material" uib-typeahead="rawMaterial as rawMaterial.name for rawMaterial in getRawMaterial($viewValue)">
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-condensed">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Code</th>
+                                    <th class="col-sm-3">Name</th>
+                                    <th>Price</th>
+                                    <th class="col-sm-1">Qty</th>
+                                    <th>SubTotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="fg in listRawMaterial">
+                                    <td>
+                                        <button class="btn btn-danger btn-sm" ng-click="remove($index)"><i class="fa fa-times"></i></button>
+                                    </td>
+                                    <td>{{fg.code}}</td>
+                                    <td>{{fg.name}}</td>
+                                    <td><input type="text" class="form-control input-sm" ng-model="fg.price" ng-change="updateTotalPrice()"></td>
+                                    <td>
+                                        <input type="text" class="form-control input-sm" ng-model="fg.quantity" ng-change="updateTotalPrice()">
+                                    </td>                                   
+                                    <td>{{ getTotalPricePerProduct($index) | number:2 }}</td>
+                                </tr>
+                            </tbody>                          
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-7 control-label">Total Harga</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" ng-model="totalPrice" disabled="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label">Pilih Kas</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Cash Name" ng-model="cash.account" uib-typeahead="cash as cash.name for cash in getCash($viewValue)">
+                </div>
+                <label class="col-sm-2 control-label">Kas</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Nilai yg dibayar" ng-model="cash.amount" ng-change="valueChange()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label">Pilih Bank</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Bank Name" ng-model="bank.account" uib-typeahead="bank as bank.name for bank in getBank($viewValue)">
+                </div>
+                <label class="col-sm-2 control-label">Bank</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Nilai yg dibayar" ng-model="bank.amount" ng-change="valueChange()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label">Pilih Supplier</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Nama Supplier" ng-model="accountPayable.account" uib-typeahead="accountPayable as accountPayable.name for accountPayable in getSupplier($viewValue)">
+                </div>               
+                <label class="col-sm-2 control-label">Utang</label> 
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="amount" ng-model="accountPayable.amount" disabled="">
+                </div>
+            </div>
+           <div class="form-group" ng-show="accountPayable.amount > 0">
+                
+                <label class="col-sm-3 col-sm-offset-6 control-label">Jatuh Tempo Utang</label>
+                <div class="col-sm-3">
+                     <input date-range-picker options="opts" class="form-control date-picker" type="text" ng-model="accountPayable.paymentDate" placeholder="select date range" />
+                </div>
+                
+            </div> 
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="cancel()"><i class="fa fa-check-square-o"></i> Cancel</button>
+        <button class="btn btn-primary" ng-click="create()"><i class="fa fa-check-square-o"></i> Submit</button>
+    </div>
+</div>

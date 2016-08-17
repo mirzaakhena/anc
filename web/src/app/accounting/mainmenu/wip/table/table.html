@@ -1,0 +1,59 @@
+<div class="panel panel-tab">
+    <div class="panel-heading">
+        <div class="form-inline">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-primary" ng-click="create()"><i class="fa fa-check-square-o"></i> Start Produksi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="masuk">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-condensed table-bordered">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Kode</th>
+                                    <th rowspan="2">Nama</th>
+                                    <th colspan="2" style="text-align:center;">Total</th>
+                                    <th colspan="2" style="text-align:center;">Selesai</th>
+                                    <th colspan="2" style="text-align:center;">Sisa WIP</th>
+                                    <th rowspan="2" style="text-align:center;">Aksi</th>
+                                </tr>
+                                <tr>
+                                    <th>Qty </th>
+                                    <th>Biaya</th>
+                                    <th>Qty</th>
+                                    <th>Biaya</th>
+                                    <th>Qty</th>
+                                    <th>Biaya</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in items">
+                                    <td>{{item.code}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.totalQuantity}}</td>
+                                    <td>{{item.totalCost | number:2}}</td>
+
+                                    <td>{{item.finishQuantity}}</td>
+                                    <td>{{item.totalCost - item.remainingTotalCost | number:2}}</td>
+                                    
+                                    <td>{{item.remainingQuantity}}</td>
+                                    <td>{{item.remainingTotalCost | number:2}}</td>
+                                    <td>
+                                        <button class="btn btn-primary" ng-click="detail(item)">Detail</button>
+                                        <button class="btn btn-danger" ng-click="finishProduction(item)" ng-show="!item.finished">Selesai</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

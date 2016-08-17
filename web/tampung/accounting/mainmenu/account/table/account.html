@@ -1,0 +1,54 @@
+<div class="panel panel-tab">
+    <div class="panel-heading">
+        <div class="form-inline">
+            <button class="btn btn-primary" ng-click="create()"><i class="fa fa-check-square-o"></i> New Account</button>
+            <div class="pull-right">
+                <input date-range-picker options="opts" class="form-control date-picker" type="text" ng-model="datePicker" placeholder="select date range" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="masuk">
+                <div class="table-responsive">
+                    <table class="table  table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-1">Code</th>
+                                <th>Name</th>
+                                <th>Sub Account</th>
+                                <th style="text-align:center;">Debet</th>
+                                <th style="text-align:center;">Credit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ab in accountBalances">
+                                <td>
+                                    <span class="label" ng-class="{'label-primary':ab.account.accountSide === 'ACTIVA', 'label-danger':ab.account.accountSide === 'PASSIVA' }">
+                                                {{ab.account.code}}                                        
+                                            </span>
+                                </td>
+                                <td>
+                                    <div ng-style="{'padding-left': ((ab.account.level-1) * 30) + 'px'}">
+                                        <a class="btn btn-link btn-xs" ng-click="onAccountClicked(ab.account)">
+                                                    {{ab.account.name}}
+                                                </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a class="btn btn-warning btn-xs" ng-show="ab.account.accountType =='CHILD_AS_SUBACCOUNT' && ab.account.level >= 3 " ng-click="onSubAccountClicked(ab.account)"> sub account </a>
+                                   
+                                </td>
+                                <td ng-style="{'padding-left': (10 +(ab.account.level-1) * 30) + 'px'}" ng-show="ab.account.accountSide =='ACTIVA'">{{ab.balance | number:0}}</td>
+                                <td ng-style="{'padding-left': (10 +(ab.account.level-1) * 30) + 'px'}" ng-show="ab.account.accountSide =='ACTIVA'"></td>
+                                <td ng-style="{'padding-left': (10 +(ab.account.level-1) * 30) + 'px'}" ng-show="ab.account.accountSide =='PASSIVA'"></td>
+                                <td ng-style="{'padding-left': (10 +(ab.account.level-1) * 30) + 'px'}" ng-show="ab.account.accountSide =='PASSIVA'">{{ab.balance | number:0}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</div>

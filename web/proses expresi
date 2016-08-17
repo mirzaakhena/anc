@@ -1,0 +1,175 @@
+
+RM  =-?
+OH  =+?
+TK	=+?
+WIP =+?
+
+
+WIP = OH+TK+RM
+
+
+
++WIP -RM = +OH +TK
+
+
++WIP -RM -OH -TK
+
+-OH -RM -TK +WIP
+
+
+
+
+1.1.3.* a=?1	L
+1.1.2.@ b=-?2	L
+1.1.1.2 c=-?3	L
+2.1.1.@ d=a+b+c R
+2.1.1.@ e=b+c R
+
+
+
++a +b +c == +d
+
++a -b -c -d == 0
+
+
+"d=a+b+c"  ==  "a+b+c-d=0" == "d-a-b-c=0" == "d-c=a+b" == "-b+d=c+a" 
+
+
+==================
+
+
+
+
+
+
+kita ketemu 'a' 
+cek apakah 'a' sudah pernah ada?
+sudah: 
+	STOP! kabari bahwa harus pakai variabel yang lain
+belum:
+	lihat exp di kanan '='
+		cek apakah kita ketemu '\\?\\d+'
+		ya:
+			X.variabel = 'a'
+		
+		cek apakah kita ketemu '-?\\?\\d+'
+		ya:
+			X.variabel = 'a'
+			X.negation = true
+
+		X.order = FROM(\\d+)
+		
+		selaindariitu:			
+			extract variabel dari mathexp, make sure semua variabel ada
+			jika ada:
+				
+
+
+
+
+
+
+
+TAHAP 1 : Operator membuat template
+operator menulis script, lalu disubmit ke server
+server akan MEMVALIDASI script tsb lalu menyimpannya
+
+MEMVALIDASI adalah
+	1. memastikan setiap variabel tersedia pada setiap expression
+	2. membuat expresi secara programatically lalu membandingkan dengan yg dibuat oleh operator
+
+
+
+TAHAP 2 : User memanggil template
+template akan diextract dan disusun dlm bentuk objek lalu akan dikirimkan ke frontend
+frontend akan membuatkan tampilan sesuai dengan apa yg di berikan oleh server
+
+TAHAP 3 : User mensubmit jurnal
+
+
+
+
+
+
+
+
+
+
+
+try {
+			String[] scripts = { "act a=?1", "act b=-?2", "act c=-?3", "psv d=a+b+c", };
+
+			List<String> vars = new ArrayList<>();
+
+			for (String script : scripts) {
+
+				String[] parts = script.split(" ");
+
+				String code = parts[0].trim();
+				{
+					if (code.equals("act")) {
+
+					}
+
+					if (code.equals("psv")) {
+
+					}
+				}
+
+				String varexes = parts[1].trim();
+				{
+					
+					
+					String[] varex = varexes.split("=");
+					{
+						String left = varex[0].trim();
+
+						if (vars.contains(left)) {
+							throw new Exception("variabel udah ada");
+						}
+
+						String right = varex[1].trim();
+
+						if (right.matches("\\?\\d+")) {
+							System.out.println("ketemu '?'");
+						}
+
+						else
+
+						if (right.matches("-\\?\\d+")) {
+							System.out.println("ketemu '-?'");
+						}
+												
+
+					}
+
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("done");
+
+
+
+			Pattern pat = Pattern.compile("\\d+");
+			Matcher m = pat.matcher("-?12");
+			while (m.find()) {
+				System.out.println(m.group());
+			}
+
+
+
+
+
+
+
+
+
+
+			
+
+
+

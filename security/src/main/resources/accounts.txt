@@ -1,0 +1,107 @@
+# ini adalah file "desain akun" yang bertujuan untuk memudahkan user agar tidak perlu membuat akun secara satu persatu
+
+# apabila diawali tanda # maka baris tersebut bisa diabaikan dan bisa dijadikan sebagai komentar
+
+# baris kosong akan diabaikan. Gunakan jika dirasa perlu agar lebih mudah dibaca untuk memisahkan tiap akun
+
+# tab atau spasi diawal akan diabaikan
+
+# setiap akun terdiri dari "kode_akun_ortu<spasi>nama_akun". ortu artinya => orang tua (parent)
+# contohnya "1.2.1 Tanah" artinya kita akan membuat akun "Tanah" dibawah akun ortu dengan kode "1.2"
+# sedangkan ".1" diakhir akan diabaikan. Digunakan untuk memudahkan pembacaan saja 
+# karena pada dasarnya index kode akun (kode ujung terakhir) akan ditentukan oleh sistem
+
+# ada bbrp simbol yang digunakan untuk mengubah tipe dari akun yaitu a, p, s, i, x
+# simbol "a" dan "p" masing2 digunakan untuk membuat akun dengan sisi "ACTIVA" dan sisi "PASSIVA"
+# apabila sebuah akun sudah ditentukan berada di sisi activa atau passiva, maka anaknya otomatis akan ikut ortu
+# meskipun begitu,  si akun anak juga menentukan sendiri sisinya dengan memberikan simbol "a" dan "p" juga
+
+# simbol "x" adalah untuk menyatakan bahwa AKUN TERSEBUT sudah final dan tidak bisa punya anak lagi
+
+# simbol "s" adalah untuk menyatakan bahwa ANAK DARI AKUN TERSEBUT adalah akun "subaccount"
+# dan anak tersebut otomatis menjadi akun yang final (tidak bisa punya anak lagi)
+
+# simbol "i" adalah untuk menyatakan bahwa ANAK DARI AKUN TERSEBUT adalah akun "inventory"
+# dan anak tersebut otomatis menjadi akun yang final (tidak bisa punya anak lagi)
+
+# < > ! $ @
+
+1a Harta     
+	1.1 Aktiva Lancar
+		1.1.1s Kas    
+			1.1.1.1 Kas Kecil
+			1.1.1.2 Kas Besar
+		1.1.2s Bank
+			1.1.2.1 BCA
+			1.1.2.2 Mandiri
+			1.1.2.3 Danamon
+			1.1.2.4 BRI 
+		1.1.3i Raw Material
+			1.1.3.1 Sekrup
+			1.1.3.2 Obeng
+			1.1.3.3 Paku
+			1.1.3.4 Palu
+			1.1.3.5 Cat
+			1.1.3.6 Scrap
+			1.1.3.7 Sekop
+			1.1.3.8 Sekrup
+			1.1.3.9 Triplek 
+			1.1.3.10 Kayu 
+		1.1.4i Work In Process
+		1.1.5i Finish Goods
+			1.1.5.1 Kursi
+			1.1.5.2 Meja
+			1.1.5.3 Lemari
+			1.1.5.4 Bangku   
+		1.1.6s Piutang Dagang
+		1.1.7x Asuransi dibayar dimuka
+		1.1.8x Sewa dibayar dimuka
+		1.1.9x Perlengkapan 
+	1.2 Aktiva Tetap Berwujud
+		1.2.1x Tanah
+		1.2.2x Bangunan
+		1.2.3x Akumulasi Penyusutan Bangunan
+		1.2.4x Kendaraan
+		1.2.5x Akumulasi Penyusutan Kendaraan
+		1.2.6x Peralatan
+		1.2.7x Akumulasi Penyusutan Peralatan
+		1.2.8x Mesin
+		1.2.9x Akumulasi Penyusutan Mesin
+	1.3 Aktiva Lain-lain
+		1.3.1x Biaya Pra Operasi
+		1.3.2x Aktiva Lainnya
+2p Utang     
+	2.1 Utang Lancar                                          
+		2.1.1s Utang Dagang    
+			2.1.1.1 Zunan
+			2.1.1.2 Tika       
+		2.1.2x Pendapatan diterima dimuka
+		2.1.3x Biaya tenaga kerja akan diperhitungkan
+		2.1.4x Biaya overhead akan diperhitungkan
+	2.2 Utang Jangka Panjang
+		2.2.1x Utang Obligasi
+		2.2.2x Utang Hipotik     
+3p Modal     
+	3.1 Modal
+		3.1.1x Modal 
+		3.1.2x Saldo Laba Tahun Berjalan
+4p Pendapatan
+	4.1 Pendapatan                        
+		4.1.1x Pendapatan Penjualan
+		4.1.2x Pendapatan Jasa 
+		4.1.3x Pendapatan Lain lain
+5a Biaya                            
+	5.1 Harga Pokok Penjualan                           
+		5.1.1x Harga Pokok Penjualan		                      
+	5.2 Biaya Umum dan Administrasi
+		5.2.1x Biaya Gaji Tenaga Kerja
+		5.2.2x Biaya Overhead
+		5.2.3x Biaya Penyusutan
+		5.2.4x Biaya Listrik dan Air
+		5.2.5x Biaya Sewa  
+	5.3 Biaya Penjualan
+		5.3.1x Biaya Promosi  
+		5.3.2x Biaya Transportasi
+		5.3.3x Biaya Komisi  
+	5.4 Biaya
+		5.4.1x Biaya Lain lain 

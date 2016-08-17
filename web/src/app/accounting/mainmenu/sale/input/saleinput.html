@@ -1,0 +1,111 @@
+
+<div ng-cloak>
+    <div class="modal-header">
+        <h3 class="modal-title">Penjualan Finish Goods</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-1 control-label">Faktur</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="123 456 33442.9" ng-model="faktur">
+                </div>
+            </div>
+            <div class="form-group typeahead-demo">
+                <label class="col-sm-1 control-label">Nama</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" typeahead-on-select="onSelect($item, $model, $label, $event)" ng-model="customSelected" placeholder="Nama Finished Goods" uib-typeahead="finishgoods as finishgoods.name for finishgoods in getFinishGoods($viewValue)">
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-condensed">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Code</th>
+                                    <th class="col-sm-3">Name</th>
+                                    <th>Sale Price</th>
+                                    <th class="col-sm-1">Qty</th>
+                                    <th class="col-sm-1">Disc %</th>
+                                    <th class="col-sm-2">Disc Rp</th>
+                                    <th>SubTotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="fg in listFinishedGoods">
+                                    <td>
+                                        <button class="btn btn-danger btn-sm" ng-click="remove($index)"><i class="fa fa-times"></i></button>
+                                    </td>
+                                    <td>{{fg.code}}</td>
+                                    <td>{{fg.name}}</td>
+                                    <td>{{fg.salePrice | number:2}}</td>
+                                    <td>
+                                        <input type="text" class="form-control input-sm" ng-model="fg.quantity" ng-change="updateTotalPrice()">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-sm" ng-model="fg.discountPercentage" ng-disabled="fg.discountPrice" ng-change="updateTotalPrice()">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control input-sm" ng-model="fg.discountPrice" ng-disabled="fg.discountPercentage" ng-change="updateTotalPrice()">
+                                    </td>
+                                    <td>{{ getTotalPricePerProduct($index) | number:2}}</td>
+                                </tr>
+                            </tbody>                           
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-7 control-label">Total Harga</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" ng-model="totalPrice" disabled="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label">Pilih Kas</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Cash Name" ng-model="cash.account" uib-typeahead="cash as cash.name for cash in getCash($viewValue)">
+                </div>
+                <label class="col-sm-2 control-label">Kas</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Bayar Dengan Kas" ng-model="cash.amount" ng-change="valueChange()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label">Pilih Bank</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Bank Name" ng-model="bank.account" uib-typeahead="bank as bank.name for bank in getBank($viewValue)">
+                </div>
+                <label class="col-sm-2 control-label">Bank</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Bayar Dengan Bank" ng-model="bank.amount" ng-change="valueChange()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label">Pilih Customer</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Nama Customer" ng-model="accountReceivable.account" uib-typeahead="accountReceivable as accountReceivable.name for accountReceivable in getCustomer($viewValue)">
+                </div>               
+                <label class="col-sm-2 control-label">Piutang</label> 
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="amount" ng-model="accountReceivable.amount" disabled="">
+                </div>
+            </div>
+            <div class="form-group">
+                
+                <label class="col-sm-3 col-sm-offset-6 control-label">Jatuh Tempo Piutang</label>
+                <div class="col-sm-3">                    
+                    <input date-range-picker options="opts" class="form-control date-picker" type="text" ng-model="accountReceivable.paymentDate" placeholder="select date range" />
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="cancel()"><i class="fa fa-check-square-o"></i> Cancel</button>
+        <button class="btn btn-primary" ng-click="create()"><i class="fa fa-check-square-o"></i> Submit</button>
+    </div>
+</div>

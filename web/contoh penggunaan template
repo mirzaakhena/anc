@@ -1,0 +1,340 @@
+contoh penggunaan template
+
+pembelian raw material
+1.1.3.* a=? // raw materialnya bisa banyak dan boleh pilih
+1.1.2.@ b=-? // banknya boleh pilih tapi cuma satu
+1.1.1.2 c=-? // kas nya hanya boleh kas besar saja
+2.1.1.@ d=? // utangnya boleh pilih tapi satu saja
+
+a+b+c-d == 0
+
+
+a: Raw Material ---> 1330
+b: BCA 			---> -800
+c: Kas besar	---> -200
+d: Utang 		--->  330
+
+
+1330 + (-800) + (-200) -330 = 0
+
+
+///////
+
+1.1.3.* a=? // raw materialnya bisa banyak dan boleh pilih
+1.1.2.@ b=-? // banknya boleh pilih tapi cuma satu
+1.1.1.2 c=-? // kas nya hanya boleh kas besar saja
+2.1.1.@ d=a+b+c // utangnya boleh pilih tapi satu saja
+
+1330+(-800)+(-200) = 330
+
+
+========================================================================
+
+
+Pembayaran Utang
+1.1.2.@ a=-? nilai utang yang dibayarkan // banknya boleh pilih tapi cuma satu
+2.1.1.@ b=a // suppliernya boleh pilih tapi cuma satu
+
+========================================================================
+
+pembelian secara utang dan uang muka
+1.1.3.* a=? 
+1.1.1.2 b=-?
+2.1.1.@ c=?
+
+a+b-c == 0
+
+a = 1000
+b = 200
+c = 800
+
+1000+(-200)-800 == 0
+
+a = ?
+b = -?
+c = a+b
+
+a=1000
+b=-200
+c=1000+(-200)
+
+
+========================================================================
+
+
+module 36 hak akses
+beli raw material secara kredit dan DP
+1.1.3.* a=?  
+1.1.1.2 c=-? 
+2.1.1.@ b=a+c
+
+
+		a +c	== b
+
+
+
+[palu] [2000] [3] (+)
+[sekrup] [400] [6] (+)
+
+[kas besar]  [6000]
+
+
+[SUBMIT]
+
+
+
+
+a + c == b
+
+36.000 + (-6000) == 30.000
+
+
+raw materialnya apa?
+1.1.3.2 5000x4 = a --> 20.000
+1.1.3.7 8000x2 = a --> 16.000
+
+sama siapa ngutangnya?
+2.1.1.7
+
+
+
+
+
+================
+
++1_1_3_x=? 
+-1_1_2_a=?
+-1_1_1_2=?
++2_1_1_a=? 
+
+-1_1_3_x=? -RM
++2_1_4_a=? +OH
++2_1_3_a=? +LB
++1_1_4_a=? +WP
+
++WP == +OH +LB +RM
+
+-1_1_3_x=?
++2_1_4_a=?
++2_1_3_a=?
++1_1_4_a=+2_1_4_a+2_1_3_a+1_1_3_x
+
+1.1.3.* +rm=? 
+1.1.2.@ -bn=?
+1.1.1.2 -kb=?
+2.1.1.@ +ut=?
+
++rm -bn -kb == +ut
+
+1.1.3.* +rm=?
+1.1.2.@ -bn=?
+1.1.1.2 -kb=?
+2.1.1.@ +ut=+rm-bn-kb
+
+------------------------------------
+
+-RM=?
++OH=?
++LB=?
++WP=+OH+LB-RM
+
++WP == +OH +LB -RM
+
+
+------------------------------------
+
+SALE_CREDIT_WITH_DOWNPAYMENT
+
+0 : "Total Harga Jual Barang"
+1 : "Harga Pokok Penjualan"
+2 : "Uang Muka"
+			
+1.1.1", "[2]" Kas
+1.1.2", "[0]-[2]" PiutangDagang
+4.1.2", "[0]" Pendapatan Penjualan Jasa
+
+5.1.1", "[1]" HPP
+1.1.7", "-[1]" PersediaanBahanBaku
+
+
+motor seharga 1.000.000 dibeli tuan Ali
+secara kredit dengan DP 200.000
+
+
+
+Penjualan kredit dengan down payment
+1.1.1.2 a=? kas=200.000
+4.1.1.1 b=? pendapatan=1.000.000
+1.1.6.@ c=b-a piutang=800.000
+5.1.1.1 d=? hpp=1.000.000
+1.1.5.* e=-d finish goods=1.000.000
+
+
+------------------------------------------------
+
+
+
+TAHAP 2 : dari server ke client kirim template
+
+[
+	{
+		varname : "a"
+		code : "1.1.1"
+		description : ""
+		sign : 1 | -1
+		type : 1 | 2
+		multiple : 1 | 0
+		parent : 1 | 0
+	},
+	{
+		varname : "a"
+		code : "1.1.1"
+		description : ""
+		sign : 1 | -1
+		type : 1 | 2
+		multiple : 1 | 0
+		parent : 1 | 0
+	},
+]
+
+TAHAP 3:
+dari client ke server submit template yg sudah diinput
+
+{
+	"extraDescription":"faktur nomor xxxx",
+	"data":
+	[
+		{
+			"varname":"a",
+			"transactions":
+			[
+				{
+					"code":"1.1.1.2",
+					"amount":200000,
+					"quantity":34
+				},
+				{
+					"code":"1.1.1.2",
+					"amount":200000,
+					"quantity":34
+				},
+				{
+					"code":"1.1.1.2",
+					"amount":200000,
+					"quantity":34
+				},
+				{
+					"code":"1.1.1.2",
+					"amount":200000,
+					"quantity":34
+				},
+				{
+					"code":"1.1.1.2",
+					"amount":200000,
+					"quantity":34
+				},
+				{
+					"code":"1.1.1.2",
+					"amount":200000,
+					"quantity":34
+				},
+				{
+					"code":"1.1.1.2",
+					"amount":200000,
+					"quantity":34
+				}
+			]
+		},
+		{
+			"varname":"b",
+			"transactions":
+			[
+				{
+					"code":"1.4.2.2",
+					"amount":-200000,
+					"quantity":0
+				}
+			]
+		}
+	]
+}
+
+
+
+
+
+
+
+
+
+barang apa? 
+berapa banyak?
+mau bayar pakai apa?
+dp ?
+
+
+harga_jual_barang: 1.200.000
+dp: 200.000
+hpp: 900.000
+---
+terima_kas: 200.000 ==> dp
+piutang: 1.000.000 ==> harga_jual_barang - dp
+
+
+FSG=-?
+HPP=(unit_price(FSG) x quantity(FSG)) + (unit_price(FSG) x quantity(FSG))
+PDP=(product_price(FSG) x quantity(FSG)) + (product_price(FSG) x quantity(FSG)) 
+
+DPY=?
+PIU=amount(PDP)-amount(DPY)
+
+
+
+
+
+
+
+
+1.1.1.2 a=?1  kas: down payment yang diterima
+1.1.5.* e=-?3 raw material yg keluar (quantity-nya saja )
+----------------------------------------------------------------
+4.1.1.@ b=?2  pendapatan: total jumlah (harga_jual x quantity)
+5.1.1.* c=e   hpp (harga_hpp x quantity)
+1.1.6.* d=b-a piutang
+
+
+
+SUB_ACCOUNT-IN
+[no_akun] [nilai] 
+
+SUB_ACCOUNT-OUT
+[no_akun] [nilai]
+
+INVENTORY-IN
+[no_akun] [nilai] [quantity]
+
+INVENTORY-OUT
+[no_akun]    0    [quantity]
+
+
+a:1.1.5.* quantity=? raw material yg keluar (quantity-nya saja )
+b:1.1.1.2 amount=?  kas: down payment yang diterima
+----------------------------------------------------------------
+c:4.1.1.@ =?2  pendapatan: total jumlah (harga_jual x quantity)
+d:5.1.1.* c=e   hpp (harga_hpp x quantity)
+e:1.1.6.* d=b-a piutang
+
+
+
+
+
+a: code=1.1.5.*, quantity=?
+b: code=1.1.1.2, amount=?
+c: code=4.1.1.@, amount=hargaJual(a.code)*a.quantity
+d: code=5.1.1.*, amount=a.amount*a.quantity
+e: code=1.1.6.*, amount=b.amount-()
+
+
+
+
+
